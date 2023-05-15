@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище BookKeepingModelContainer" CdmEntityContainer="BookKeepingEntities">
+    <EntitySetMapping Name="BookKeeping_Date">
+      <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Date">
+        <MappingFragment StoreEntitySet="BookKeeping_Date">
+          <ScalarProperty Name="BookKeeping_Date_Id" ColumnName="BookKeeping_Date_Id" />
+          <ScalarProperty Name="BookKeeping_Date_Number" ColumnName="BookKeeping_Date_Number" />
+          <ScalarProperty Name="BookKeeping_Date_Salary" ColumnName="BookKeeping_Date_Salary" />
+          <ScalarProperty Name="BookKeeping_Date_Total" ColumnName="BookKeeping_Date_Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookKeeping_Main">
+      <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Main">
+        <MappingFragment StoreEntitySet="BookKeeping_Main">
+          <ScalarProperty Name="BookKeeping_Main_Id" ColumnName="BookKeeping_Main_Id" />
+          <ScalarProperty Name="BookKeeping_User_Id" ColumnName="BookKeeping_User_Id" />
+          <ScalarProperty Name="BookKeeping_Salary_Id" ColumnName="BookKeeping_Salary_Id" />
+          <ScalarProperty Name="BookKeeping_Date_Id" ColumnName="BookKeeping_Date_Id" />
+          <ScalarProperty Name="BookKeeping_Purchase_Id" ColumnName="BookKeeping_Purchase_Id" />
+          <ScalarProperty Name="BookKeeping_Sale_Id" ColumnName="BookKeeping_Sale_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookKeeping_Purchase">
+      <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Purchase">
+        <MappingFragment StoreEntitySet="BookKeeping_Purchase">
+          <ScalarProperty Name="BookKeeping_Purchase_Id" ColumnName="BookKeeping_Purchase_Id" />
+          <ScalarProperty Name="BookKeeping_Purchase_Article" ColumnName="BookKeeping_Purchase_Article" />
+          <ScalarProperty Name="BookKeeping_Purchase_Date" ColumnName="BookKeeping_Purchase_Date" />
+          <ScalarProperty Name="BookKeeping_Purchase_Stock" ColumnName="BookKeeping_Purchase_Stock" />
+          <ScalarProperty Name="BookKeeping_Purchase_Total" ColumnName="BookKeeping_Purchase_Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookKeeping_Salary">
+      <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Salary">
+        <MappingFragment StoreEntitySet="BookKeeping_Salary">
+          <ScalarProperty Name="BookKeeping_Salary_Id" ColumnName="BookKeeping_Salary_Id" />
+          <ScalarProperty Name="BookKeeping_Salary_Number" ColumnName="BookKeeping_Salary_Number" />
+          <ScalarProperty Name="BookKeeping_Salary_Surname" ColumnName="BookKeeping_Salary_Surname" />
+          <ScalarProperty Name="BookKeeping_Salary_Name" ColumnName="BookKeeping_Salary_Name" />
+          <ScalarProperty Name="BookKeeping_Salary_Patronymic" ColumnName="BookKeeping_Salary_Patronymic" />
+          <ScalarProperty Name="BookKeeping_Salary_Salary_Rate" ColumnName="BookKeeping_Salary_Salary_Rate" />
+          <ScalarProperty Name="BookKeeping_Salary_Work_Day" ColumnName="BookKeeping_Salary_Work_Day" />
+          <ScalarProperty Name="BookKeeping_Salary_Total" ColumnName="BookKeeping_Salary_Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookKeeping_Sale">
+      <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Sale">
+        <MappingFragment StoreEntitySet="BookKeeping_Sale">
+          <ScalarProperty Name="BookKeeping_Sale_Id" ColumnName="BookKeeping_Sale_Id" />
+          <ScalarProperty Name="BookKeeping_Sale_Article" ColumnName="BookKeeping_Sale_Article" />
+          <ScalarProperty Name="BookKeeping_Sale_Date" ColumnName="BookKeeping_Sale_Date" />
+          <ScalarProperty Name="BookKeeping_Sale_Stock" ColumnName="BookKeeping_Sale_Stock" />
+          <ScalarProperty Name="BookKeeping_Sale_Total" ColumnName="BookKeeping_Sale_Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookKeeping_User">
+      <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_User">
+        <MappingFragment StoreEntitySet="BookKeeping_User">
+          <ScalarProperty Name="BookKeeping_User_Id" ColumnName="BookKeeping_User_Id" />
+          <ScalarProperty Name="BookKeeping_User_Login" ColumnName="BookKeeping_User_Login" />
+          <ScalarProperty Name="BookKeeping_User_Password" ColumnName="BookKeeping_User_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BookKeepingModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище BookKeepingModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище BookKeepingModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище BookKeepingModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище BookKeepingModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookKeepingModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище BookKeepingModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookKeepingModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище BookKeepingModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище BookKeepingModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

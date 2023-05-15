@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f6e65a3658647988a1ce0da64eecb87" Name="Diagram1">
+        <EntityTypeShape EntityType="BookKeepingModel.BookKeeping_Date" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKeepingModel.BookKeeping_Main" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKeepingModel.BookKeeping_Purchase" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKeepingModel.BookKeeping_Salary" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKeepingModel.BookKeeping_Sale" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKeepingModel.BookKeeping_User" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookKeepingModel.sysdiagram" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="BookKeepingModel.FK_BookKeeping_Main_BookKeeping_Date" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKeepingModel.FK_BookKeeping_Main_BookKeeping_Purchase" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKeepingModel.FK_BookKeeping_Main_BookKeeping_Salary" ManuallyRouted="false" />
+        <AssociationConnector Association="BookKeepingModel.FK_BookKeeping_Main_BookKeeping_Sale" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

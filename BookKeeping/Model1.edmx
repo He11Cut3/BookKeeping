@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BookKeepingModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookKeeping_Date">
+          <Key>
+            <PropertyRef Name="BookKeeping_Date_Id" />
+          </Key>
+          <Property Name="BookKeeping_Date_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookKeeping_Date_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Date_Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Date_Total" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Main">
+          <Key>
+            <PropertyRef Name="BookKeeping_Main_Id" />
+          </Key>
+          <Property Name="BookKeeping_Main_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookKeeping_User_Id" Type="int" />
+          <Property Name="BookKeeping_Salary_Id" Type="int" />
+          <Property Name="BookKeeping_Date_Id" Type="int" />
+          <Property Name="BookKeeping_Purchase_Id" Type="int" />
+          <Property Name="BookKeeping_Sale_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Purchase">
+          <Key>
+            <PropertyRef Name="BookKeeping_Purchase_Id" />
+          </Key>
+          <Property Name="BookKeeping_Purchase_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookKeeping_Purchase_Article" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Purchase_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Purchase_Stock" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Purchase_Total" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Salary">
+          <Key>
+            <PropertyRef Name="BookKeeping_Salary_Id" />
+          </Key>
+          <Property Name="BookKeeping_Salary_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookKeeping_Salary_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Salary_Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Salary_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Salary_Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Salary_Salary_Rate" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Salary_Work_Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Salary_Total" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Sale">
+          <Key>
+            <PropertyRef Name="BookKeeping_Sale_Id" />
+          </Key>
+          <Property Name="BookKeeping_Sale_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookKeeping_Sale_Article" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Sale_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Sale_Stock" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_Sale_Total" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookKeeping_User">
+          <Key>
+            <PropertyRef Name="BookKeeping_User_Id" />
+          </Key>
+          <Property Name="BookKeeping_User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookKeeping_User_Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookKeeping_User_Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Date">
+          <End Role="BookKeeping_Date" Type="Self.BookKeeping_Date" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Date">
+              <PropertyRef Name="BookKeeping_Date_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Date_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Purchase">
+          <End Role="BookKeeping_Purchase" Type="Self.BookKeeping_Purchase" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Purchase">
+              <PropertyRef Name="BookKeeping_Purchase_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Purchase_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Salary">
+          <End Role="BookKeeping_Salary" Type="Self.BookKeeping_Salary" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Salary">
+              <PropertyRef Name="BookKeeping_Salary_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Salary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Sale">
+          <End Role="BookKeeping_Sale" Type="Self.BookKeeping_Sale" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Sale">
+              <PropertyRef Name="BookKeeping_Sale_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Sale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище BookKeepingModelContainer">
+          <EntitySet Name="BookKeeping_Date" EntityType="Self.BookKeeping_Date" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookKeeping_Main" EntityType="Self.BookKeeping_Main" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookKeeping_Purchase" EntityType="Self.BookKeeping_Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookKeeping_Salary" EntityType="Self.BookKeeping_Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookKeeping_Sale" EntityType="Self.BookKeeping_Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookKeeping_User" EntityType="Self.BookKeeping_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Date" Association="Self.FK_BookKeeping_Main_BookKeeping_Date">
+            <End Role="BookKeeping_Date" EntitySet="BookKeeping_Date" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Purchase" Association="Self.FK_BookKeeping_Main_BookKeeping_Purchase">
+            <End Role="BookKeeping_Purchase" EntitySet="BookKeeping_Purchase" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Salary" Association="Self.FK_BookKeeping_Main_BookKeeping_Salary">
+            <End Role="BookKeeping_Salary" EntitySet="BookKeeping_Salary" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Sale" Association="Self.FK_BookKeeping_Main_BookKeeping_Sale">
+            <End Role="BookKeeping_Sale" EntitySet="BookKeeping_Sale" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookKeepingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookKeeping_Date">
+          <Key>
+            <PropertyRef Name="BookKeeping_Date_Id" />
+          </Key>
+          <Property Name="BookKeeping_Date_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookKeeping_Date_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Date_Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Date_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Date" FromRole="BookKeeping_Date" ToRole="BookKeeping_Main" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Main">
+          <Key>
+            <PropertyRef Name="BookKeeping_Main_Id" />
+          </Key>
+          <Property Name="BookKeeping_Main_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookKeeping_User_Id" Type="Int32" />
+          <Property Name="BookKeeping_Salary_Id" Type="Int32" />
+          <Property Name="BookKeeping_Date_Id" Type="Int32" />
+          <Property Name="BookKeeping_Purchase_Id" Type="Int32" />
+          <Property Name="BookKeeping_Sale_Id" Type="Int32" />
+          <NavigationProperty Name="BookKeeping_Date" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Date" FromRole="BookKeeping_Main" ToRole="BookKeeping_Date" />
+          <NavigationProperty Name="BookKeeping_Purchase" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Purchase" FromRole="BookKeeping_Main" ToRole="BookKeeping_Purchase" />
+          <NavigationProperty Name="BookKeeping_Salary" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Salary" FromRole="BookKeeping_Main" ToRole="BookKeeping_Salary" />
+          <NavigationProperty Name="BookKeeping_Sale" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Sale" FromRole="BookKeeping_Main" ToRole="BookKeeping_Sale" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Purchase">
+          <Key>
+            <PropertyRef Name="BookKeeping_Purchase_Id" />
+          </Key>
+          <Property Name="BookKeeping_Purchase_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookKeeping_Purchase_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Purchase_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Purchase_Stock" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Purchase_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Purchase" FromRole="BookKeeping_Purchase" ToRole="BookKeeping_Main" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Salary">
+          <Key>
+            <PropertyRef Name="BookKeeping_Salary_Id" />
+          </Key>
+          <Property Name="BookKeeping_Salary_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookKeeping_Salary_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Salary_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Salary_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Salary_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Salary_Salary_Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Salary_Work_Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Salary_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Salary" FromRole="BookKeeping_Salary" ToRole="BookKeeping_Main" />
+        </EntityType>
+        <EntityType Name="BookKeeping_Sale">
+          <Key>
+            <PropertyRef Name="BookKeeping_Sale_Id" />
+          </Key>
+          <Property Name="BookKeeping_Sale_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookKeeping_Sale_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Sale_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Sale_Stock" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_Sale_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Sale" FromRole="BookKeeping_Sale" ToRole="BookKeeping_Main" />
+        </EntityType>
+        <EntityType Name="BookKeeping_User">
+          <Key>
+            <PropertyRef Name="BookKeeping_User_Id" />
+          </Key>
+          <Property Name="BookKeeping_User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookKeeping_User_Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookKeeping_User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Date">
+          <End Role="BookKeeping_Date" Type="Self.BookKeeping_Date" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Date">
+              <PropertyRef Name="BookKeeping_Date_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Date_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Purchase">
+          <End Role="BookKeeping_Purchase" Type="Self.BookKeeping_Purchase" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Purchase">
+              <PropertyRef Name="BookKeeping_Purchase_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Purchase_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Salary">
+          <End Role="BookKeeping_Salary" Type="Self.BookKeeping_Salary" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Salary">
+              <PropertyRef Name="BookKeeping_Salary_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Salary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookKeeping_Main_BookKeeping_Sale">
+          <End Role="BookKeeping_Sale" Type="Self.BookKeeping_Sale" Multiplicity="0..1" />
+          <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookKeeping_Sale">
+              <PropertyRef Name="BookKeeping_Sale_Id" />
+            </Principal>
+            <Dependent Role="BookKeeping_Main">
+              <PropertyRef Name="BookKeeping_Sale_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookKeepingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookKeeping_Date" EntityType="Self.BookKeeping_Date" />
+          <EntitySet Name="BookKeeping_Main" EntityType="Self.BookKeeping_Main" />
+          <EntitySet Name="BookKeeping_Purchase" EntityType="Self.BookKeeping_Purchase" />
+          <EntitySet Name="BookKeeping_Salary" EntityType="Self.BookKeeping_Salary" />
+          <EntitySet Name="BookKeeping_Sale" EntityType="Self.BookKeeping_Sale" />
+          <EntitySet Name="BookKeeping_User" EntityType="Self.BookKeeping_User" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Date" Association="Self.FK_BookKeeping_Main_BookKeeping_Date">
+            <End Role="BookKeeping_Date" EntitySet="BookKeeping_Date" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Purchase" Association="Self.FK_BookKeeping_Main_BookKeeping_Purchase">
+            <End Role="BookKeeping_Purchase" EntitySet="BookKeeping_Purchase" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Salary" Association="Self.FK_BookKeeping_Main_BookKeeping_Salary">
+            <End Role="BookKeeping_Salary" EntitySet="BookKeeping_Salary" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Sale" Association="Self.FK_BookKeeping_Main_BookKeeping_Sale">
+            <End Role="BookKeeping_Sale" EntitySet="BookKeeping_Sale" />
+            <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BookKeepingModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BookKeepingModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BookKeepingModelContainer" CdmEntityContainer="BookKeepingEntities">
+          <EntitySetMapping Name="BookKeeping_Date">
+            <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Date">
+              <MappingFragment StoreEntitySet="BookKeeping_Date">
+                <ScalarProperty Name="BookKeeping_Date_Id" ColumnName="BookKeeping_Date_Id" />
+                <ScalarProperty Name="BookKeeping_Date_Number" ColumnName="BookKeeping_Date_Number" />
+                <ScalarProperty Name="BookKeeping_Date_Salary" ColumnName="BookKeeping_Date_Salary" />
+                <ScalarProperty Name="BookKeeping_Date_Total" ColumnName="BookKeeping_Date_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookKeeping_Main">
+            <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Main">
+              <MappingFragment StoreEntitySet="BookKeeping_Main">
+                <ScalarProperty Name="BookKeeping_Main_Id" ColumnName="BookKeeping_Main_Id" />
+                <ScalarProperty Name="BookKeeping_User_Id" ColumnName="BookKeeping_User_Id" />
+                <ScalarProperty Name="BookKeeping_Salary_Id" ColumnName="BookKeeping_Salary_Id" />
+                <ScalarProperty Name="BookKeeping_Date_Id" ColumnName="BookKeeping_Date_Id" />
+                <ScalarProperty Name="BookKeeping_Purchase_Id" ColumnName="BookKeeping_Purchase_Id" />
+                <ScalarProperty Name="BookKeeping_Sale_Id" ColumnName="BookKeeping_Sale_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookKeeping_Purchase">
+            <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Purchase">
+              <MappingFragment StoreEntitySet="BookKeeping_Purchase">
+                <ScalarProperty Name="BookKeeping_Purchase_Id" ColumnName="BookKeeping_Purchase_Id" />
+                <ScalarProperty Name="BookKeeping_Purchase_Article" ColumnName="BookKeeping_Purchase_Article" />
+                <ScalarProperty Name="BookKeeping_Purchase_Date" ColumnName="BookKeeping_Purchase_Date" />
+                <ScalarProperty Name="BookKeeping_Purchase_Stock" ColumnName="BookKeeping_Purchase_Stock" />
+                <ScalarProperty Name="BookKeeping_Purchase_Total" ColumnName="BookKeeping_Purchase_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookKeeping_Salary">
+            <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Salary">
+              <MappingFragment StoreEntitySet="BookKeeping_Salary">
+                <ScalarProperty Name="BookKeeping_Salary_Id" ColumnName="BookKeeping_Salary_Id" />
+                <ScalarProperty Name="BookKeeping_Salary_Number" ColumnName="BookKeeping_Salary_Number" />
+                <ScalarProperty Name="BookKeeping_Salary_Surname" ColumnName="BookKeeping_Salary_Surname" />
+                <ScalarProperty Name="BookKeeping_Salary_Name" ColumnName="BookKeeping_Salary_Name" />
+                <ScalarProperty Name="BookKeeping_Salary_Patronymic" ColumnName="BookKeeping_Salary_Patronymic" />
+                <ScalarProperty Name="BookKeeping_Salary_Salary_Rate" ColumnName="BookKeeping_Salary_Salary_Rate" />
+                <ScalarProperty Name="BookKeeping_Salary_Work_Day" ColumnName="BookKeeping_Salary_Work_Day" />
+                <ScalarProperty Name="BookKeeping_Salary_Total" ColumnName="BookKeeping_Salary_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookKeeping_Sale">
+            <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_Sale">
+              <MappingFragment StoreEntitySet="BookKeeping_Sale">
+                <ScalarProperty Name="BookKeeping_Sale_Id" ColumnName="BookKeeping_Sale_Id" />
+                <ScalarProperty Name="BookKeeping_Sale_Article" ColumnName="BookKeeping_Sale_Article" />
+                <ScalarProperty Name="BookKeeping_Sale_Date" ColumnName="BookKeeping_Sale_Date" />
+                <ScalarProperty Name="BookKeeping_Sale_Stock" ColumnName="BookKeeping_Sale_Stock" />
+                <ScalarProperty Name="BookKeeping_Sale_Total" ColumnName="BookKeeping_Sale_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookKeeping_User">
+            <EntityTypeMapping TypeName="BookKeepingModel.BookKeeping_User">
+              <MappingFragment StoreEntitySet="BookKeeping_User">
+                <ScalarProperty Name="BookKeeping_User_Id" ColumnName="BookKeeping_User_Id" />
+                <ScalarProperty Name="BookKeeping_User_Login" ColumnName="BookKeeping_User_Login" />
+                <ScalarProperty Name="BookKeeping_User_Password" ColumnName="BookKeeping_User_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BookKeepingModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище BookKeepingModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище BookKeepingModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище BookKeepingModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище BookKeepingModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookKeepingModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище BookKeepingModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookKeepingModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище BookKeepingModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище BookKeepingModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookKeepingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BookKeeping_Date">
+    <Key>
+      <PropertyRef Name="BookKeeping_Date_Id" />
+    </Key>
+    <Property Name="BookKeeping_Date_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookKeeping_Date_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Date_Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Date_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Date" FromRole="BookKeeping_Date" ToRole="BookKeeping_Main" />
+  </EntityType>
+  <EntityType Name="BookKeeping_Main">
+    <Key>
+      <PropertyRef Name="BookKeeping_Main_Id" />
+    </Key>
+    <Property Name="BookKeeping_Main_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookKeeping_User_Id" Type="Int32" />
+    <Property Name="BookKeeping_Salary_Id" Type="Int32" />
+    <Property Name="BookKeeping_Date_Id" Type="Int32" />
+    <Property Name="BookKeeping_Purchase_Id" Type="Int32" />
+    <Property Name="BookKeeping_Sale_Id" Type="Int32" />
+    <NavigationProperty Name="BookKeeping_Date" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Date" FromRole="BookKeeping_Main" ToRole="BookKeeping_Date" />
+    <NavigationProperty Name="BookKeeping_Purchase" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Purchase" FromRole="BookKeeping_Main" ToRole="BookKeeping_Purchase" />
+    <NavigationProperty Name="BookKeeping_Salary" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Salary" FromRole="BookKeeping_Main" ToRole="BookKeeping_Salary" />
+    <NavigationProperty Name="BookKeeping_Sale" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Sale" FromRole="BookKeeping_Main" ToRole="BookKeeping_Sale" />
+  </EntityType>
+  <EntityType Name="BookKeeping_Purchase">
+    <Key>
+      <PropertyRef Name="BookKeeping_Purchase_Id" />
+    </Key>
+    <Property Name="BookKeeping_Purchase_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookKeeping_Purchase_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Purchase_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Purchase_Stock" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Purchase_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Purchase" FromRole="BookKeeping_Purchase" ToRole="BookKeeping_Main" />
+  </EntityType>
+  <EntityType Name="BookKeeping_Salary">
+    <Key>
+      <PropertyRef Name="BookKeeping_Salary_Id" />
+    </Key>
+    <Property Name="BookKeeping_Salary_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookKeeping_Salary_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Salary_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Salary_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Salary_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Salary_Salary_Rate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Salary_Work_Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Salary_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Salary" FromRole="BookKeeping_Salary" ToRole="BookKeeping_Main" />
+  </EntityType>
+  <EntityType Name="BookKeeping_Sale">
+    <Key>
+      <PropertyRef Name="BookKeeping_Sale_Id" />
+    </Key>
+    <Property Name="BookKeeping_Sale_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookKeeping_Sale_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Sale_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Sale_Stock" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_Sale_Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BookKeeping_Main" Relationship="Self.FK_BookKeeping_Main_BookKeeping_Sale" FromRole="BookKeeping_Sale" ToRole="BookKeeping_Main" />
+  </EntityType>
+  <EntityType Name="BookKeeping_User">
+    <Key>
+      <PropertyRef Name="BookKeeping_User_Id" />
+    </Key>
+    <Property Name="BookKeeping_User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookKeeping_User_Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookKeeping_User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_BookKeeping_Main_BookKeeping_Date">
+    <End Role="BookKeeping_Date" Type="Self.BookKeeping_Date" Multiplicity="0..1" />
+    <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookKeeping_Date">
+        <PropertyRef Name="BookKeeping_Date_Id" />
+      </Principal>
+      <Dependent Role="BookKeeping_Main">
+        <PropertyRef Name="BookKeeping_Date_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookKeeping_Main_BookKeeping_Purchase">
+    <End Role="BookKeeping_Purchase" Type="Self.BookKeeping_Purchase" Multiplicity="0..1" />
+    <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookKeeping_Purchase">
+        <PropertyRef Name="BookKeeping_Purchase_Id" />
+      </Principal>
+      <Dependent Role="BookKeeping_Main">
+        <PropertyRef Name="BookKeeping_Purchase_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookKeeping_Main_BookKeeping_Salary">
+    <End Role="BookKeeping_Salary" Type="Self.BookKeeping_Salary" Multiplicity="0..1" />
+    <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookKeeping_Salary">
+        <PropertyRef Name="BookKeeping_Salary_Id" />
+      </Principal>
+      <Dependent Role="BookKeeping_Main">
+        <PropertyRef Name="BookKeeping_Salary_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BookKeeping_Main_BookKeeping_Sale">
+    <End Role="BookKeeping_Sale" Type="Self.BookKeeping_Sale" Multiplicity="0..1" />
+    <End Role="BookKeeping_Main" Type="Self.BookKeeping_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookKeeping_Sale">
+        <PropertyRef Name="BookKeeping_Sale_Id" />
+      </Principal>
+      <Dependent Role="BookKeeping_Main">
+        <PropertyRef Name="BookKeeping_Sale_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookKeepingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookKeeping_Date" EntityType="Self.BookKeeping_Date" />
+    <EntitySet Name="BookKeeping_Main" EntityType="Self.BookKeeping_Main" />
+    <EntitySet Name="BookKeeping_Purchase" EntityType="Self.BookKeeping_Purchase" />
+    <EntitySet Name="BookKeeping_Salary" EntityType="Self.BookKeeping_Salary" />
+    <EntitySet Name="BookKeeping_Sale" EntityType="Self.BookKeeping_Sale" />
+    <EntitySet Name="BookKeeping_User" EntityType="Self.BookKeeping_User" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Date" Association="Self.FK_BookKeeping_Main_BookKeeping_Date">
+      <End Role="BookKeeping_Date" EntitySet="BookKeeping_Date" />
+      <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Purchase" Association="Self.FK_BookKeeping_Main_BookKeeping_Purchase">
+      <End Role="BookKeeping_Purchase" EntitySet="BookKeeping_Purchase" />
+      <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Salary" Association="Self.FK_BookKeeping_Main_BookKeeping_Salary">
+      <End Role="BookKeeping_Salary" EntitySet="BookKeeping_Salary" />
+      <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BookKeeping_Main_BookKeeping_Sale" Association="Self.FK_BookKeeping_Main_BookKeeping_Sale">
+      <End Role="BookKeeping_Sale" EntitySet="BookKeeping_Sale" />
+      <End Role="BookKeeping_Main" EntitySet="BookKeeping_Main" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BookKeepingModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BookKeepingModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
